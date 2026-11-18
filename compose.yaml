@@ -1,0 +1,13 @@
+services:
+  catalog:
+    build: .
+    image: cicd1-catalog:lab7
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:h2:file:./data/catalogdb"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    volumes:
+      - catalog__data:/app/data
+volumes:
+  catalog__data:
